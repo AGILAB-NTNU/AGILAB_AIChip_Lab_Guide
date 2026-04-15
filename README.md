@@ -1,6 +1,6 @@
 # NTNU EE - AI Hardware Accelerator Project
 
-[![Lab Wiki](https://img.shields.io/badge/Documentation-Lab%20Wiki-blue.svg)](YOUR_WIKI_LINK_HERE)
+[![Lab Wiki](https://img.shields.io/badge/Documentation-Lab%20Wiki-blue.svg)](https://github.com/AGILAB-NTNU/AGILAB_AIChip_Lab_Guide/wiki)
 
 
 This repository contains the hardware implementation of a **Systolic Array-based AI Accelerator**, developed by the **AI Hardware Lab at National Taiwan Normal University (NTNU)**. Our research focuses on optimizing PPA (Power, Performance, Area) for edge AI inference.
