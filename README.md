@@ -1,18 +1,30 @@
-# NTNU EE - AI Hardware Accelerator Project
+# 🚀 AGILAB - AI Chip & Hardware Accelerator Project
+**National Taiwan Normal University (NTNU) | Department of Electrical Engineering**
 
-[![Lab Wiki](https://img.shields.io/badge/Documentation-Lab%20Wiki-blue.svg)](https://github.com/AGILAB-NTNU/AGILAB_AIChip_Lab_Guide/wiki)
+[![Lab Wiki](https://img.shields.io/badge/Documentation-AGILAB%20Wiki-blue.svg)](https://github.com/AGILAB-NTNU/AGILAB_AIChip_Lab_Guide/wiki)
 
-
-This repository contains the hardware implementation of a **Systolic Array-based AI Accelerator**, developed by the **AI Hardware Lab at National Taiwan Normal University (NTNU)**. Our research focuses on optimizing PPA (Power, Performance, Area) for edge AI inference.
+This repository serves as the central hardware implementation hub for **AGILAB** at National Taiwan Normal University (NTNU). Our research focuses on high-efficiency AI inference engines, optimizing **PPA (Power, Performance, Area)** for complex edge AI workloads and transformer-based architectures.
 
 ---
 
-## 📖 Overview
+## 📖 Research Scope & Features
 
-This project implements a scalable systolic array architecture for matrix multiplication and convolution operations, specifically optimized for:
-* **Hardware Efficiency**: Softmax optimization and attention-distribution-aware architecture.
-* **FPGA Deployment**: Target platform - Xilinx PYNQ-Z2 / SoC.
-* **ASIC Ready**: RTL code follows strict synthesis guidelines for future tape-outs.
+This project implements a scalable AI acceleration framework, integrating specialized hardware IPs for end-to-end inference:
+
+* **Computation Core**: High-throughput **Systolic Array** architecture for GEMM and Convolution.
+* **Non-linear & Normalization**: Optimized hardware units for **Softmax** and **LayerNorm** to accelerate Transformer inference.
+* **Quantization**: Implementation of **DPQU (Dual-Precision Quantization Unit)** for adaptive precision data paths.
+* **Efficiency**: **Attention-distribution-aware** architecture to minimize redundant NPU computations.
+* **ASIC Ready**: All RTL code follows strict synthesis guidelines for future tape-outs.
+
+---
+
+## 💻 Target Platforms
+
+Our designs are verified across a diverse range of Xilinx hardware to ensure scalability:
+* **Edge SoC**: Xilinx **PYNQ-Z2** (Zynq-7000)
+* **High-Performance SoC**: Xilinx **Zynq UltraScale+ (ZU+)** series
+* **Data Center Accelerator**: Xilinx **Alveo U55C** (HBM2 enabled)
 
 ---
 
@@ -22,17 +34,27 @@ To prevent repository bloat and ensure cross-platform consistency, we use a **Tc
 
 ### 1. Prerequisites
 * Xilinx Vivado (2024.x recommended)
-* Git
+* Git & VS Code (with Verilog/SystemVerilog extensions)
 
 ### 2. Rebuild the Project
-Do not open the project folder directly. Instead, use the Vivado Tcl Console:
+Do not open the project folder directly. Use the **Vivado Tcl Console** to reconstruct the environment:
 
 ```tcl
-# Navigate to the repository directory
+# 1. Navigate to the repository directory
 cd [your_repo_path]
 
-# Step 1: Initialize the project shell
+# 2. Initialize the project shell (Settings, Files, & Folders)
 source project_config.tcl
 
-# Step 2: Reconstruct the Block Design (if applicable)
+# 3. Reconstruct the Block Design (for Zynq/ZU+ systems)
 source design_1.tcl
+```
+---
+## 📜 Development Standards (SOP)
+All contributors must follow the internal AGILAB standards:
+
+1. **HDL Coding Style**: Directional I/O naming (East/South), Synchronous Resets, and 3-Block FSM style.
+
+2. **Git Workflow**: A source-only workflow. DO NOT commit .runs, .cache, or .xpr files.
+
+3. **[PPA Evaluation]**: Before the April 22nd evaluation, ensure Timing (WNS > 0) and Power reports are exported.
